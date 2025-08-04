@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <style>
+        input {
+            font-style: italic;
+            background-color: rgb(208, 208, 226);
+            font-size: 26px;
+            border-radius: 23px;
+            border: 3px solid rgb(0, 0, 0);
+        }
+
+        h1 {
+            font-style: italic;
+            text-align: center;
+            font-size: 43px;
+            color: rgb(30, 30, 30);
+        }
+
+        .n:hover,
+        .a:hover,
+        .e:hover,
+        .c:hover,
+        .m:hover,
+        .am:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        div {
+            text-align: center;
+        }
+
+        .n {
+            font-size: 30px;
+            background-color: deepskyblue;
+            border-color: deepskyblue;
+            border-width: 13px;
+            border-style: dashed;
+            border-radius: 15px;
+            width: 65px;
+            height: 65px;
+        }
+
+        .a {
+            font-size: 30px;
+            background-color: rgb(255, 0, 0);
+            border-color: rgb(255, 0, 0);
+            border-width: 13px;
+            border-style: dashed;
+            border-radius: 15px;
+            width: 65px;
+            height: 65px;
+        }
+
+        .m {
+            font-size: 30px;
+            background-color: rgb(255, 0, 0);
+            border-color: rgb(255, 0, 0);
+            border-width: 16px;
+            border-style: dashed;
+            border-radius: 15px;
+            width: 65px;
+            height: 65px;
+        }
+
+        .e {
+            font-size: 30px;
+            background-color: rgb(11, 220, 11);
+            border-color: rgb(11, 220, 11);
+            border-width: 12px;
+            border-style: dashed;
+            border-radius: 15px;
+            width: 65px;
+            height: 65px;
+        }
+
+        .c {
+            font-size: 30px;
+            background-color: fuchsia;
+            border-color: fuchsia;
+            border-width: 12px;
+            border-style: dashed;
+            border-radius: 15px;
+            width: 65px;
+            height: 65px;
+        }
+
+        .error {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: x-large;
+            background-color: red;
+        }
+
+        .calc {
+            color: rgb(255, 255, 255);
+        }
+
+        * {
+            font-family: Times New Roman;
+        }
+
+        .am {
+            font-size: 25px;
+            background-color: rgb(255, 0, 0);
+            border-color: rgb(255, 0, 0);
+            border-width: 13px;
+            border-style: dashed;
+            border-radius: 15px;
+            width: 65px;
+            height: 65px;
+        }
+    </style>
+    <div>
+        <h1>Calculator</h1>
+        <input type="number" id="n" />
+        <br />
+        <br />
+        <input type="button" value="1⁄x" onclick="makus()" class="am" />
+        <input type="button" value="x^y" onclick="tavan()" class="am" />
+        <input type="button" value="√" onclick="jazr()" class="am" />
+        <input type="button" value="n!" onclick="faktoriel()" class="am" />
+        <br />
+        <br />
+        <button onclick="Add1()" class="n">1</button>
+        <button onclick="Add2()" class="n">2</button>
+        <button onclick="Add3()" class="n">3</button>
+        <input type="button" value="+" onclick="jam()" class="a" />
+        <br />
+        <br />
+        <button onclick="Add4()" class="n">4</button>
+        <button onclick="Add5()" class="n">5</button>
+        <button onclick="Add6()" class="n">6</button>
+        <input type="button" value="-" onclick="menha()" class="m" />
+
+        <br />
+        <br />
+        <button onclick="Add7()" class="n">7</button>
+        <button onclick="Add8()" class="n">8</button>
+        <button onclick="Add9()" class="n">9</button>
+        <input type="button" value="×" onclick="zarb()" class="a" />
+        <br />
+        <br />
+        <button onclick="c()" class="c">C</button>
+        <button onclick="Add0()" class="n">0</button>
+        <button onclick="Calculate()" class="e">=</button>
+        <input type="button" value="÷" onclick="taghsim()" class="a" />
+    </div>
+
+</body>
+<script>
+    try {
+        function Add0() {
+            document.getElementById("n").value += "0";
+        }
+        function Add1() {
+            document.getElementById("n").value += "1";
+        }
+        function Add2() {
+            document.getElementById("n").value += "2";
+        }
+        function Add3() {
+            document.getElementById("n").value += "3";
+        }
+        function Add4() {
+            document.getElementById("n").value += "4";
+        }
+        function Add5() {
+            document.getElementById("n").value += "5";
+        }
+        function Add6() {
+            document.getElementById("n").value += "6";
+        }
+        function Add7() {
+            document.getElementById("n").value += "7";
+        }
+        function Add8() {
+            document.getElementById("n").value += "8";
+        }
+        function Add9() {
+            document.getElementById("n").value += "9";
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        function jam() {
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            document.getElementById("lbln1").innerHTML = n;
+            document.getElementById("n").value = "";
+            document.getElementById("lblactive").innerHTML = "j";
+        }
+        function menha() {
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            document.getElementById("lbln1").innerHTML = n;
+            document.getElementById("n").value = "";
+            document.getElementById("lblactive").innerHTML = "m";
+        }
+        function zarb() {
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            document.getElementById("lbln1").innerHTML = n;
+            document.getElementById("n").value = "";
+            document.getElementById("lblactive").innerHTML = "z";
+        }
+        function taghsim() {
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            document.getElementById("lbln1").innerHTML = n;
+            document.getElementById("n").value = "";
+            document.getElementById("lblactive").innerHTML = "t";
+        }
+        function makus() {
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            document.getElementById("n").value = 1 / n;
+        }
+        function tavan() {
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            document.getElementById("lbln1").innerHTML = n;
+            document.getElementById("n").value = "";
+            document.getElementById("lblactive").innerHTML = "tavan";
+        }
+        function jazr() {
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            document.getElementById("n").value = Math.sqrt(n);
+        }
+        function faktoriel() {
+            let faktoriel = 1;
+            let n = document.getElementById("n").value;
+            n = parseInt(n);
+            for (var f = n; f >= 1; f--) {
+                faktoriel = faktoriel * f;
+            }
+            document.getElementById("n").value = faktoriel;
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        function Calculate() {
+            var n2 = document.getElementById("n").value;
+            n2 = parseInt(n2);
+            document.getElementById("n").value = "";
+            if (document.getElementById("lblactive").innerHTML == "j") {
+                let n1 = document.getElementById("lbln1").innerHTML;
+                n1 = parseInt(n1);
+                document.getElementById("n").value = n1 + n2;
+            }
+            else if (document.getElementById("lblactive").innerHTML == "m") {
+                let n1 = document.getElementById("lbln1").innerHTML;
+                n1 = parseInt(n1);
+                document.getElementById("n").value = n1 - n2;
+            }
+            else if (document.getElementById("lblactive").innerHTML == "z") {
+                let n1 = document.getElementById("lbln1").innerHTML;
+                n1 = parseInt(n1);
+                document.getElementById("n").value = n1 * n2;
+            }
+            else if (document.getElementById("lblactive").innerHTML == "t") {
+                let n1 = document.getElementById("lbln1").innerHTML;
+                n1 = parseInt(n1);
+                document.getElementById("n").value = n1 / n2;
+            }
+            else if (document.getElementById("lblactive").innerHTML == "tavan") {
+                let n1 = document.getElementById("lbln1").innerHTML;
+                n1 = parseInt(n1);
+                document.getElementById("n").value = Math.pow(n1, n2);
+            }
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        function c() {
+            window.location.reload();
+        }
+    }
+    catch (error) {
+        document.getElementById("lblError").innerHTML = (error);
+    }
+</script>
+<label id="lblError" class="error"></label>
+<p id="lbln1" class="calc"></p>
+<p id="lblactive" class="calc"></p>
+
+</html>
